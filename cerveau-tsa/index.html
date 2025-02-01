@@ -1,61 +1,52 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <title>Cerveau TSA - Boucle Striatale</title>
+    <style> body { margin: 0; } </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Cerveau TSA - Boucle Striatale&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt; body { margin: 0; } &lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Configuration de la scène</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const scene = new THREE.Scene();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const renderer = new THREE.WebGLRenderer();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>renderer.setSize(window.innerWidth, window.innerHeight);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.body.appendChild(renderer.domElement);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Contrôles de la caméra</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const controls = new THREE.OrbitControls(camera, renderer.domElement);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>camera.position.z = 5;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Chargement du modèle 3D (exemple : cerveau_tsa.glb)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const loader = new THREE.GLTFLoader();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>loader.load('cerveau_tsa.glb', function (gltf) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const cerveau = gltf.scene;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>scene.add(cerveau);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Mettre en évidence la boucle striatale</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cerveau.traverse((child) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (child.name === 'striatum') {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>child.material.color.set(0xFF0000); // Couleur rouge</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Animation</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function animate() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>requestAnimationFrame(animate);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>controls.update();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>renderer.render(scene, camera);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>animate();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+        // Configuration de la scène
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Contrôles de la caméra
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.z = 5;
+
+        // Chargement du modèle 3D (URL correcte)
+        const loader = new THREE.GLTFLoader();
+        loader.load('https://messirenico.github.io/cerveau-tsa-boucle-striatale/cerveau_tsa.glb', function (gltf) {
+            const cerveau = gltf.scene;
+            scene.add(cerveau);
+
+            // Afficher tous les objets pour identifier la boucle striatale
+            cerveau.traverse((child) => {
+                console.log(child.name); // Affiche les noms des objets dans la console
+
+                // Change "striatum" par le bon nom trouvé dans la console
+                if (child.name === 'striatum') {
+                    child.material = new THREE.MeshStandardMaterial({ color: 0xFF0000 });
+                }
+            });
+        }, undefined, function (error) {
+            console.error('Erreur lors du chargement du modèle :', error);
+        });
+
+        // Animation
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
